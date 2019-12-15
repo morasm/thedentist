@@ -11,11 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="worker")
-public class Worker {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="worker_id")
+public class Worker extends Person{
+	
+	@Column(name="workerID")
 	private int workerId;
 	
 	@Column(name="salary")
@@ -59,8 +57,7 @@ public class Worker {
 
 	@Override
 	public String toString() {
-		return "Worker [workerId=" + workerId + ", salary=" + salary + "]";
+		return "Worker [workerId=" + workerId + ", salary=" + salary + ", dateOfEmployment=" + dateOfEmployment + "]";
 	}
-	
-	
+
 }
