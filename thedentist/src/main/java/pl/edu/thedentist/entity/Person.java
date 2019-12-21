@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,7 +42,24 @@ public class Person {
 	@Column(name="email_address")
 	private String emailAddress;
 
+	@OneToOne
+	@JoinColumn(name="patient_id")
+	private Patient patient;
+	
 	public Person() {
+	}
+
+	public Person(int personId, String lastName, String firstName, String pesel, String addressCity,
+			String addressStreet, String addressNumber, String phoneNumber, String emailAddress) {
+		this.personId = personId;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.pesel = pesel;
+		this.addressCity = addressCity;
+		this.addressStreet = addressStreet;
+		this.addressNumber = addressNumber;
+		this.phoneNumber = phoneNumber;
+		this.emailAddress = emailAddress;
 	}
 
 	public int getPersonId() {
@@ -113,6 +132,13 @@ public class Person {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [personId=" + personId + ", lastName=" + lastName + ", firstName=" + firstName + ", pesel="
+				+ pesel + ", addressCity=" + addressCity + ", addressStreet=" + addressStreet + ", addressNumber="
+				+ addressNumber + ", phoneNumber=" + phoneNumber + ", emailAddress=" + emailAddress + "]";
 	}
 
 	
