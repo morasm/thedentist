@@ -47,10 +47,10 @@ public class Visit {
 	@Column(name = "visitNotes")
 	private String visitNotes;
 	
-	@OneToMany(mappedBy = "receipt")
+	@OneToMany(mappedBy = "visitID")
 	private List<Prescription> receipts;
 	
-	@OneToMany(mappedBy = "testReport")
+	@OneToMany(mappedBy = "testReportID")
 	private List<TestReport> testReports;
 
 	public Visit() {
