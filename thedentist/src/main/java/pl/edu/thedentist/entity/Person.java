@@ -48,7 +48,7 @@ public class Person {
 	@Column(name="password")
 	private String password;
 	
-	// Roles are seperated by ','
+	// Roles are stored in the DB separated by ',' character.
 	@Column(name="roles")
 	private String roles = "";
 	
@@ -63,8 +63,7 @@ public class Person {
 //	@JoinColumn(name="worker_id")
 //	private Worker worker;
 	
-	public Person() {
-	}
+	public Person() {}
 
 	public Person(String lastName, String firstName, String pesel, String addressCity,
 			String addressStreet, String addressNumber, String phoneNumber, String emailAddress, String password,
