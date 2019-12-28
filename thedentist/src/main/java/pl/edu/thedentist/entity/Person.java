@@ -43,16 +43,23 @@ public class Person {
 	
 	@Column(name="email_address")
 	private String emailAddress;
+	
+	@Column(name="password")
+	private String password;
 
-	@OneToOne
-	@JoinColumn(name="patient_id")
-	private Patient patient;
+//	@OneToOne
+//	@JoinColumn(name="patient_id")
+//	private Patient patient;
+//	
+//	@OneToOne
+//	@JoinColumn(name="worker_id")
+//	private Worker worker;
 	
 	public Person() {
 	}
 
 	public Person(int personId, String lastName, String firstName, String pesel, String addressCity,
-			String addressStreet, String addressNumber, String phoneNumber, String emailAddress) {
+			String addressStreet, String addressNumber, String phoneNumber, String emailAddress, String password) {
 		this.personId = personId;
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -62,6 +69,7 @@ public class Person {
 		this.addressNumber = addressNumber;
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
+		this.password = password;
 	}
 
 	public int getPersonId() {
@@ -134,6 +142,14 @@ public class Person {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
