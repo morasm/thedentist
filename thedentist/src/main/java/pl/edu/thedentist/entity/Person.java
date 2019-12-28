@@ -1,5 +1,9 @@
 package pl.edu.thedentist.entity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -46,6 +47,13 @@ public class Person {
 	
 	@Column(name="password")
 	private String password;
+	
+	// Roles are stored in the DB separated by ',' character.
+	@Column(name="roles")
+	private String roles = "";
+	
+	@Column(name="permissions")
+	private String permissions = "";
 
 //	@OneToOne
 //	@JoinColumn(name="patient_id")
@@ -55,12 +63,11 @@ public class Person {
 //	@JoinColumn(name="worker_id")
 //	private Worker worker;
 	
-	public Person() {
-	}
+	public Person() {}
 
-	public Person(int personId, String lastName, String firstName, String pesel, String addressCity,
-			String addressStreet, String addressNumber, String phoneNumber, String emailAddress, String password) {
-		this.personId = personId;
+	public Person(String lastName, String firstName, String pesel, String addressCity,
+			String addressStreet, String addressNumber, String phoneNumber, String emailAddress, String password,
+			String roles, String permissions) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.pesel = pesel;
@@ -70,6 +77,8 @@ public class Person {
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
 		this.password = password;
+		this.roles = roles;
+		this.permissions = permissions;		
 	}
 
 	public int getPersonId() {
@@ -150,6 +159,28 @@ public class Person {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public String getPermissions() {
+		return permissions;
+	}
+	
+	public List<String> getRoleList() {
+		if(this.roles.length() > 0) {
+			return Arrays.asList(this.roles.split(","));
+		}
+		return new ArrayList<String>();
+	}
+	
+	public List<String> getPermissionList() {
+		if(this.permissions.length() > 0) {
+			return Arrays.asList(this.permissions.split(","));
+		}
+		return new ArrayList<String>();
 	}
 
 	@Override
