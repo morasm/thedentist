@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
 	@GetMapping("/login")
-	public String listDoctor(Model theModel) {
-		return "login";
+	public String showLoginForm(Model theModel) {
+		
+		return TemplatesNames.LOGIN_FORM;
 	}	
 }
