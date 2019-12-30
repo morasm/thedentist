@@ -17,19 +17,17 @@ public class RegistrationController {
 	PersonService personService;
 	
 	@GetMapping("/addPersonForm")
-	public String showAddPersonForm(Model theModel) {
-				
-		Person addPerson = new Person();
+	public String showAddPersonForm(Model theModel) {	
+		theModel.addAttribute("addPerson", new Person());
 		
-		theModel.addAttribute("addPerson", addPerson);
-		
-		return "registration-form";
+		return TemplatesNames.REGISTRATION_FORM;
 	}
 	
 	@PostMapping("/addPersonForm")
 	public String submitAddPersonForm(@ModelAttribute Person addPerson) {
 		personService.save(addPerson);
-		return "home";		
+		
+		return TemplatesNames.HOME_PAGE;		
 	}
 	
 }
