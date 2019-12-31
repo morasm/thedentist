@@ -3,20 +3,86 @@
 <head>
     <title>Registration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <style>
+    	*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+    	body { font-family: 'Nunito', sans-serif; color: #384047; }
+    	#container {margin-left: auto; margin-right: auto; width: 800px; margin-top: 50px; margin-bottom: 40px;}
+    	h1 { margin: 0 0 30px 0; text-align: center; }
+    	form { max-width: 800px; margin: 10px auto; padding: 10px 20px; background: #f4f7f8; border-radius: 8px; }
+    	input[type="text"],
+		input[type="password"],
+		input[type="email"]
+		{
+		  background: rgba(255,255,255,0.1);
+		  border: none;
+		  font-size: 16px;
+		  height: auto;
+		  margin: 0;
+		  outline: 0;
+		  padding: 15px;
+		  width: 100%;
+		  background-color: #e8eeef;
+		  color: #8a97a0;
+		  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+		  margin-bottom: 30px;
+		  margin-top: 15px; 
+		}
+		input[type="submit"] {
+		  padding: 19px 39px 18px 39px;
+		  color: #FFF;
+		  background-color: #4bc970;
+		  font-size: 18px;
+		  text-align: center;
+		  font-style: normal;
+		  border-radius: 5px;
+		  width: 100%;
+		  border: 1px solid #3ac162;
+		  border-width: 1px 1px 3px;
+		  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+		  margin-bottom: 10px;
+		}
+		input[type="submit"]:hover {
+			cursor: pointer;
+		}
+		#home_link {
+			padding: 5px;
+			background-color: #4bc970;
+			font-size: 18px;
+			  text-align: center;
+			  font-style: normal;
+			  border-radius: 5px;
+			  width: 100%;
+			  border: 1px solid #3ac162;
+			  border-width: 1px 1px 3px;
+			  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+			  margin-bottom: 10px;
+		}
+		a {
+			text-decoration: none;
+			color: #FFF;
+		}
+		
+    </style>
 </head>
 <body>
-	<h1>Registration Form</h1>
-    <form action="#" th:action="@{/addPersonForm}" th:object="${addPerson}" method="post">
-        <p>PESEL: <input type="text" th:field="*{pesel}" /></p>
-        <p>First Name: <input type="text" th:field="*{firstName}" /></p>
-        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
-        <p>City: <input type="text" th:field="*{addressCity}" /></p>
-        <p>Street: <input type="text" th:field="*{addressStreet}" /></p>
-        <p>Number: <input type="text" th:field="*{addressNumber}" /></p>
-        <p>Phone Number: <input type="number" th:field="*{phoneNumber}" /></p>
-        <p>E-mail address: <input type="email" th:field="*{emailAddress}" /></p>
-        <p>Password: <input type="password" th:field="*{password}" /></p>
-        <p><input type="submit" value="Sign Up" /> <input type="reset" value="Reset" /></p>
-    </form>
+	<div id="container">
+		<h1>REGISTRATION FORM</h1>
+	    <form action="#" th:action="@{/addPersonForm}" th:object="${addPerson}" method="post">
+	        <p>FIRST NAME: <input type="text" placeholder="eg. Jan" th:field="*{firstName}" /></p>
+	        <p>LAST NAME: <input type="text" placeholder="eg. Kowalski" th:field="*{lastName}" /></p>
+	        <p>PESEL: <input type="text" placeholder="eg. 95010122000" th:field="*{pesel}" /></p>
+	        <p>CITY: <input type="text" placeholder="eg. Bydgoszcz" th:field="*{addressCity}" /></p>
+	        <p>STREET: <input type="text" placeholder="eg. Długa" th:field="*{addressStreet}" /></p>
+	        <p>NUMBER: <input type="text" placeholder="eg. 1/1" th:field="*{addressNumber}" /></p>
+	        <p>PHONE NUMBER: <input type="text" placeholder="eg. 602602602" th:field="*{phoneNumber}" /></p>
+	        <p>E-MAIL ADDRESS: <input type="email" placeholder="eg. jan@mail.com" th:field="*{emailAddress}" /></p>
+	        <p>PASSWORD: <input type="password" th:field="*{password}" /></p>
+	        <p><input type="submit" value="Sign Up"/></p>
+	        <div id="home_link">
+	        	<a href="home">Go back to the Home Page</a>
+	        </div>
+	    </form>
+    </div>
 </body>
 </html>
