@@ -2,21 +2,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:th="http://www.thymeleaf.org"  
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
 <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link href="css/headerstyle.css" rel="stylesheet">
 <title>Gabinet dentystyczny</title>
 </head>
 
 <body>
 
-	<div layout:insert="~{fragments/header::header}">...</div>
-	<div>Zawartość</div>
-	<div layout:insert="~{fragments/footer::copy}">...</div>
+	<div th:insert="~{fragments/header::header}"></div>
+	
+	<div>Witamy na stronie gabinetu</div>
+	
+	<div th:insert="~{fragments/footer::copy}"></div>
 </body>
 
 </html>

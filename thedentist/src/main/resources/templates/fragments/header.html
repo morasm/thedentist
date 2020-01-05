@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"  
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
+<head>
+    <link th:href="@{/css/headerstyle.css}" type="text/css" rel="stylesheet">
+</head>
 <body>
 
-	<div layout:fragment="header">
-		<h2>Nagłówek</h2>
+	<div th:fragment="header">
+		<div id="navheader">
+		<h1>A beautiful picture to be inserted :)</h1>
+		<div id="navigation">
+			<ul>
+				<li><a href="/home"> Home</a></li>
+				<li><a href="/addWorkerForm">Add worker</a></li>
+				<li style="float:right"><a href="/login">Login</a></li>
+				<li style="float:right"><a href="/addPersonForm">Register user</a></li>
+			</ul>
+		</div>
+		</div>
 	</div>
-
 </body>
 
 </html>
