@@ -17,7 +17,7 @@ public class TestReport {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "testReporttID")
+	@Column(name = "testReportID")
 	private int testReportID;
 	
 	@ManyToOne(fetch = FetchType.LAZY)	

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"  
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Create prescription</title>
+    
+    <link href="css/personform.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+	<div id="container">
+		
+		<h1>CREATE PRESCRIPTION</h1>
+	
+		<form action="#" th:action="@{/prescriptions/save}"
+						 th:object="${prescription}" method="POST">
+		
+			<input type="hidden" th:field="*{prescriptionID}" />
+			
+			<p>
+			<label for="visitID">VISIT: </label>
+			<select id="visitID" th:field="*{visitID}">
+    			<option th:each="i : ${visitID}" th:value="${{i}}" th:text="${i.visitID}">
+    			</option>
+			</select>
+			<br>
+			
+			<p>
+			<label for="patientID">PATIENT: </label>
+			<select id="patientID" th:field="*{patientID}">
+    			<option th:each="i : ${patientID}" th:value="${{i}}" th:text="${i.patientID}">
+    			</option>
+			</select>
+			<br>
+			
+			<p>
+			<label for="dentistID">DENTIST: </label>		
+			<select id="dentistID" th:field="*{dentistID}">
+    			<option th:each="i : ${dentistID}" th:value="${{i}}" th:text="${i.dentistID}">
+    			</option>
+			</select>		
+			<br>		
+					
+			<p>DATE OF ISSUE: <input type="text" th:field="*{dateOfIssue}" placeholder="eg. 2020-01-01"><br>
+			<p>EXPIRATION DATE: <input type="text" th:field="*{expirationDate}" placeholder="eg. 2020-02-01"><br>
+			<p>MEDICINE: <input type="text" th:field="*{medicineID}"><br>	
+			<p>NOTES: <input type="text" th:field="*{receiptNotes}" placeholder="eg. dosage"><br><br>						
+				
+			<button type="submit">Create prescription</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/prescriptions/list}">Back to prescriptions list</a>
+		<hr>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

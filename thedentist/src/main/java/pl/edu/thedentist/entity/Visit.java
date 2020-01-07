@@ -30,10 +30,6 @@ public class Visit {
 	private int dentistID;
 	
 	@NotNull
-	@Column(name = "staffID", nullable = false)
-	private int staffID;
-	
-	@NotNull
 	@Column(name = "isVisitDone", nullable = false, columnDefinition = "boolean default false")
 	private Boolean isVisitDone = false;
 	
@@ -41,8 +37,8 @@ public class Visit {
 	private int visitType;
 	
 	@NotNull
-	@Column(name = "visitDataTime", nullable = false)
-	private Date visitDataTime;
+	@Column(name = "visitDateTime", nullable = false)
+	private Date visitDateTime;
 	
 	@Column(name = "visitNotes")
 	private String visitNotes;
@@ -57,16 +53,15 @@ public class Visit {
 		
 	}
 
-	public Visit(int visitID, @NotNull int patientID, @NotNull int dentistID, @NotNull int staffID,
-			@NotNull Boolean isVisitDone, int visitType, @NotNull Date visitDataTime, String visitNotes,
+	public Visit(int visitID, @NotNull int patientID, @NotNull int dentistID,
+			@NotNull Boolean isVisitDone, int visitType, @NotNull Date visitDateTime, String visitNotes,
 			List<Prescription> receipts, List<TestReport> testReports) {
 		this.visitID = visitID;
 		this.patientID = patientID;
 		this.dentistID = dentistID;
-		this.staffID = staffID;
 		this.isVisitDone = isVisitDone;
 		this.visitType = visitType;
-		this.visitDataTime = visitDataTime;
+		this.visitDateTime = visitDateTime;
 		this.visitNotes = visitNotes;
 		this.receipts = receipts;
 		this.testReports = testReports;
@@ -96,14 +91,6 @@ public class Visit {
 		this.dentistID = dentistID;
 	}
 
-	public int getStaffID() {
-		return staffID;
-	}
-
-	public void setStaffID(int staffID) {
-		this.staffID = staffID;
-	}
-
 	public Boolean getIsVisitDone() {
 		return isVisitDone;
 	}
@@ -120,12 +107,12 @@ public class Visit {
 		this.visitType = visitType;
 	}
 
-	public Date getVisitDataTime() {
-		return visitDataTime;
+	public Date getVisitDateTime() {
+		return visitDateTime;
 	}
 
-	public void setVisitDataTime(Date visitDataTime) {
-		this.visitDataTime = visitDataTime;
+	public void setVisitDateTime(Date visitDateTime) {
+		this.visitDateTime = visitDateTime;
 	}
 
 	public String getVisitNotes() {

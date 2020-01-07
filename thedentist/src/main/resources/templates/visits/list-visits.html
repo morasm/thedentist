@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"  
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Visits list</title>
+    
+    <link href="css/personform.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div id="container">
+
+	<h1>VISITS LIST</h1>
+	
+	<!-- Add a button -->
+	<a th:href="@{/visits/showFormForAdd}"
+		class="btn btn-primary btn-sm mb-3">
+		Add visit
+	</a>
+	
+	<a th:href="@{/}"
+		class="btn btn-secondary btn-sm mb-3">
+		Go back to the Home Page
+	</a>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Patient</th>
+				<th>Dentist</th>
+				<th>Visit status</th>
+				<th>Visit type</th>
+				<th>Visit date time</th>
+				<th>Notes</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempVisit : ${visits}">
+				<td th:text="${{tempVisit.patientID}}" />
+				<td th:text="${{tempVisit.dentistID}}" />
+				<td th:text="${tempVisit.isVisitDone}" />
+				<td th:text="${tempVisit.visitType}" />
+				<td th:text="${tempVisit.visitDateTime}" />
+				<td th:text="${tempVisit.visitNotes}" />
+
+				
+				<td>
+					<!-- Add "update" button/link -->
+					<a th:href="@{/visits/showFormForUpdate(visitID=${tempVisit.visitID})}"
+					   class="btn btn-info btn-sm">
+						Update
+					</a>
+					
+					<!-- Add "delete" button/link -->					
+					<a th:href="@{/visits/delete(visitID=${tempVisit.visitID})}"
+					   class="btn btn-danger btn-sm"
+					   onclick="if (!(confirm('Are you sure you want to cancel this visit?'))) return false">
+						Delete
+					</a>
+					
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+

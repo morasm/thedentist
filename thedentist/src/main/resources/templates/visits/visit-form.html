@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"  
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Add visit</title>
+    
+    <link href="css/personform.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+	<div id="container">
+		
+		<h1>CREATE VISIT</h1>
+	
+		<form action="#" th:action="@{/visits/save}"
+						 th:object="${visit}" method="POST">
+		
+			<input type="hidden" th:field="*{visitID}" />
+			
+			<p>
+			<label for="patientID">PATIENT: </label>
+			<select id="patientID" th:field="*{patientID}">
+    			<option th:each="i : ${patientID}" th:value="${{i}}" th:text="${i.patientID}">
+    			</option>
+			</select>
+			<br>
+			
+			<p>
+			<label for="dentistID">DENTIST: </label>		
+			<select id="dentistID" th:field="*{dentistID}">
+    			<option th:each="i : ${dentistID}" th:value="${{i}}" th:text="${i.dentistID}">
+    			</option>
+			</select>		
+			<br>		
+					
+			<p>VISIT STATUS: <input type="text" th:field="*{isVisitDone}" placeholder="default: scheduled"><br>
+			0: visit scheduled,<br>
+			1: visit completed,<br>
+			
+			<p>VISIT TYPE: <input type="text" th:field="*{visitType}" placeholder="default: dental consultation"><br>
+			0: dental consultation, <br>
+			1: prosthetic consultation, <br>
+			2: composite filling, <br>
+			3: root canal treatment, <br>
+			4: zirconium crowns, <br>
+			5: other. <br>
+			
+			<p>VISIT DATE TIME: <input type="text" th:field="*{visitDateTime}" placeholder="eg. 2020-01-01"><br>	
+			<p>NOTES: <input type="text" th:field="*{visitNotes}" placeholder="eg. additional visit information"><br><br>						
+				
+			<button type="submit">Add visit</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/visits/list}">Back to visits list</a>
+		<hr>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

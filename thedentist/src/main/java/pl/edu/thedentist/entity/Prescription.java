@@ -1,5 +1,7 @@
 package pl.edu.thedentist.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,6 +27,14 @@ public class Prescription {
 	private Visit visitID;
 	
 	@NotNull
+	@Column(name="dateOfIssue", nullable = false)
+	private Date dateOfIssue;
+	
+	@NotNull
+	@Column(name="expirationDate", nullable = false)
+	private Date expirationDate;
+	
+	@NotNull
 	@Column(name = "patientID", nullable = false)
 	private int patientID;
 	
@@ -43,21 +53,23 @@ public class Prescription {
 		
 	}
 
-	public Prescription(int prescriptionID, Visit visitID, @NotNull int patientID, @NotNull int dentistID,
-			@NotNull int medicineID, String receiptNotes) {
+	public Prescription(int prescriptionID, Visit visitID, @NotNull Date dateOfIssue, @NotNull Date expirationDate,
+			@NotNull int patientID, @NotNull int dentistID, @NotNull int medicineID, String receiptNotes) {
 		this.prescriptionID = prescriptionID;
 		this.visitID = visitID;
+		this.dateOfIssue = dateOfIssue;
+		this.expirationDate = expirationDate;
 		this.patientID = patientID;
 		this.dentistID = dentistID;
 		this.medicineID = medicineID;
 		this.receiptNotes = receiptNotes;
 	}
 
-	public int getprescriptionID() {
+	public int getPrescriptionID() {
 		return prescriptionID;
 	}
 
-	public void setprescriptionID(int prescriptionID) {
+	public void setPrescriptionID(int prescriptionID) {
 		this.prescriptionID = prescriptionID;
 	}
 
@@ -67,6 +79,22 @@ public class Prescription {
 
 	public void setVisitID(Visit visitID) {
 		this.visitID = visitID;
+	}
+
+	public Date getDateOfIssue() {
+		return dateOfIssue;
+	}
+
+	public void setDateOfIssue(Date dateOfIssue) {
+		this.dateOfIssue = dateOfIssue;
+	}
+
+	public Date getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public int getPatientID() {

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"  
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Test reports list</title>
+    
+    <link href="css/personform.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div id="container">
+
+	<h1>TEST REPORTS LIST</h1>
+	
+	<!-- Add a button -->
+	<a th:href="@{/test_reports/showFormForAdd}"
+		class="btn btn-primary btn-sm mb-3">
+		Add test report
+	</a>
+	
+	<a th:href="@{/}"
+		class="btn btn-secondary btn-sm mb-3">
+		Go back to the Home Page
+	</a>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Visit</th>
+				<th>Patient</th>
+				<th>Dentist</th>
+				<th>Test ID</th>
+				<th>Notes</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempTest_report : ${test_reports}">
+				<td th:text="${{tempTest_report.visitID}}" />
+				<td th:text="${{tempTest_report.patientID}}" />
+				<td th:text="${{tempTest_report.dentistID}}" />
+				<td th:text="${tempTest_report.testID}" />
+				<td th:text="${tempTest_report.testReportNotes}" />
+
+				
+				<td>
+					<!-- Add "update" button/link -->
+					<a th:href="@{/test_reports/showFormForUpdate(testReportID=${tempTest_report.testReportID})}"
+					   class="btn btn-info btn-sm">
+						Update
+					</a>
+					
+					<!-- Add "delete" button/link -->					
+					<a th:href="@{/test_reports/delete(testReportID=${tempTest_report.testReportID})}"
+					   class="btn btn-danger btn-sm"
+					   onclick="if (!(confirm('Are you sure you want to delete this test report?'))) return false">
+						Delete
+					</a>
+					
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+
