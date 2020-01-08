@@ -1,6 +1,7 @@
 package pl.edu.thedentist.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ public class RegistrationController {
 	
 	@Autowired
 	PersonService personService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/addPersonForm")
 	public String showAddPersonForm(Model theModel) {	
@@ -25,6 +29,7 @@ public class RegistrationController {
 	
 	@PostMapping("/addPersonForm")
 	public String submitAddPersonForm(@ModelAttribute Person addPerson) {
+		addPerson.setPassword(passwordEncoder.encode(addPerson.getPassword()));
 		personService.save(addPerson);
 		
 		return TemplatesNames.HOME_PAGE;		

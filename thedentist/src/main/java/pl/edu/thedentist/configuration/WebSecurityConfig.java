@@ -38,8 +38,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//auth
 		
-		http.authorizeRequests().antMatchers("/", "/home", "/addPersonForm", "/css/**").permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/login").permitAll().and().logout().permitAll();
+		http.authorizeRequests()
+				.antMatchers("/home").access("hasRole('USER')")
+				.antMatchers("/", "/addPersonForm", "/css/**").permitAll().anyRequest().authenticated()
+				.and().formLogin().loginPage("/login").permitAll()
+				.and().logout().permitAll();
 	}	
 	
 	@Bean

@@ -30,5 +30,8 @@ build/
 ### VS Code ###
 .vscode/
 
+### IntelliJ ###
+../.idea/
+
 ### Properties File ###
 src/main/resources/application.properties
