@@ -25,9 +25,6 @@ public class RegistrationController {
 	
 	@GetMapping("/addPersonForm")
 	public String showAddPersonForm(Model theModel) {
-		Person p = personService.findById(17);
-		p.setRoles("WORKER");
-		personService.save(p);
 		theModel.addAttribute("addPerson", new Person());
 		
 		return TemplatesNames.REGISTRATION_FORM;
