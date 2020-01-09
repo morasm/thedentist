@@ -1,5 +1,7 @@
 package pl.edu.thedentist.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.Email;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -26,8 +29,9 @@ public class Person {
 	
 	@Column(name="first_name")
 	private String firstName;
-	
+
 	@Column(name="pesel")
+	@Length(min=11, max=11)
 	private String pesel;
 	
 	@Column(name="address_city")
@@ -164,6 +168,8 @@ public class Person {
 	public String getRoles() {
 		return roles;
 	}
+
+	public void setRoles(String roles) { this.roles = roles; }
 
 	public String getPermissions() {
 		return permissions;

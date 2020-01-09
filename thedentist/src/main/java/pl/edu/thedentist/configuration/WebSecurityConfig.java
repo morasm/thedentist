@@ -39,7 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//auth
 		
 		http.authorizeRequests()
-				.antMatchers("/home").access("hasRole('USER')")
+				.antMatchers("/home").access("hasRole('USER') or hasRole('WORKER')")
+				.antMatchers("/addWorkerForm").access("hasRole('WORKER')")
 				.antMatchers("/", "/addPersonForm", "/css/**").permitAll().anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").permitAll()
 				.and().logout().permitAll();

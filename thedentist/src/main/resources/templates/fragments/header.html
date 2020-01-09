@@ -18,7 +18,12 @@
 				<li><a href="/visits/list">Visits</a></li>
 				<li><a href="/prescriptions/list">Prescriptions</a></li>
 				<li><a href="/test_reports/list">Test reports</a></li>
-				<li style="float:right"><a href="/login">Login</a></li>
+				<li style="float:right" th:if="${#httpServletRequest.remoteUser}==null"><a href="/login">Sign In</a></li>
+				<li style="float:right;" th:if="${#httpServletRequest.remoteUser}!=null">
+					<form th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" style="color: #384047; text-decoration: none; width: auto; display: block; padding: 8px 16px;border: none; background: none;"/>
+					</form>
+				</li>
 				<li style="float:right"><a href="/addPersonForm">Register user</a></li>
 			</ul>
 		</div>

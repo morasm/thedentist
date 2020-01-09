@@ -17,6 +17,7 @@
 	        <p>FIRST NAME: <input type="text" placeholder="eg. Jan" th:field="*{firstName}" /></p>
 	        <p>LAST NAME: <input type="text" placeholder="eg. Kowalski" th:field="*{lastName}" /></p>
 	        <p>PESEL: <input type="text" placeholder="eg. 95010122000" th:field="*{pesel}" /></p>
+			<p th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}">PESEL Error</p>
 	        <p>CITY: <input type="text" placeholder="eg. Bydgoszcz" th:field="*{addressCity}" /></p>
 	        <p>STREET: <input type="text" placeholder="eg. Długa" th:field="*{addressStreet}" /></p>
 	        <p>NUMBER: <input type="text" placeholder="eg. 1/1" th:field="*{addressNumber}" /></p>
