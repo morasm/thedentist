@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="worker")
 public class Worker extends Person{
@@ -17,6 +19,7 @@ public class Worker extends Person{
 	private float salary;
 	
 	@Column(name="date_of_employment")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfEmployment;
 	
 	public Worker() {

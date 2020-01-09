@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"  
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Registration</title>
@@ -12,8 +11,8 @@
 </head>
 <body>
 	<div id="container">
-		<h1>REGISTRATION FORM</h1>
-	    <form action="#" th:action="@{/addWorkerForm}" th:object="${addWorker}" method="post">
+		<h1>ADD WORKER FORM</h1>
+	    <form action="#" th:action="@{/addWorkerForm}" th:object="${addDentist}" method="post">
 	        <p>FIRST NAME: <input type="text" placeholder="eg. Jan" th:field="*{firstName}" /></p>
 	        <p>LAST NAME: <input type="text" placeholder="eg. Kowalski" th:field="*{lastName}" /></p>
 	        <p>PESEL: <input type="text" placeholder="eg. 95010122000" th:field="*{pesel}" /></p>
@@ -23,6 +22,11 @@
 	        <p>PHONE NUMBER: <input type="text" placeholder="eg. 602602602" th:field="*{phoneNumber}" /></p>
 	        <p>E-MAIL ADDRESS: <input type="email" placeholder="eg. jan@mail.com" th:field="*{emailAddress}" /></p>
 	        <p>PASSWORD: <input type="password" th:field="*{password}" /></p>
+	        <p>WORKER ID: <input type="number" placeholder="eg. 1001" th:field="*{workerId}" /></p>
+	        <p>SALARY: <input type="number" placeholder="eg. 1523,0" th:field="*{salary}" /></p>
+	        <p>DATE OF EMPLOYMENT: <input type="date" th:field="*{{dateOfEmployment}}" /></p>
+	        <p>MEDICAL LICENSE: <input type="number" th:field="${addDentist.medicalLicense}" /></p>
+	        <p>SPECIALITY: <input type="text" th:field="${addDentist.speciality}" /></p>
 	        <p><input type="submit" value="Add worker"/></p>
 	        <div id="home_link">
 	        	<a href="home">Go back to the Home Page</a>
