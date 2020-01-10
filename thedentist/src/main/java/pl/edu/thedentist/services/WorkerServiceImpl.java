@@ -1,7 +1,9 @@
 package pl.edu.thedentist.services;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,16 @@ public class WorkerServiceImpl implements WorkerService {
 	public void deleteById(int theId) {
 		workerRepository.deleteById(theId);
 
+	}
+
+	@Override
+	public Worker findFirstOrderByWorkerId() {
+		List<Worker> workers = workerRepository.findAll()
+				.stream()
+				.sorted(Comparator.comparingInt(Worker::getWorkerId).reversed())
+				.collect(Collectors.toList());
+		Worker result = workers.get(0);
+		return result;
 	}
 
 }

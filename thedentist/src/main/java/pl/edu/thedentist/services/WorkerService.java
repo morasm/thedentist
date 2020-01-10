@@ -6,9 +6,11 @@ import pl.edu.thedentist.entity.Worker;
 
 public interface WorkerService {
 
-public List<Worker> findAll();
+	public List<Worker> findAll();
 	
 	public Worker findById(int theId);
+	
+	public Worker findFirstOrderByWorkerId();
 	
 	public void save(Worker theEmployee);
 	
