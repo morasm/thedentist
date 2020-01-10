@@ -4,19 +4,26 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
+//@SequenceGenerator(name="workeridseq", initialValue=1, allocationSize = 1000)
 @Table(name="worker")
 public class Worker extends Person{
 	
-	@Column(name="workerID")
+//	@Id
+	@Column(name="workerID", unique=true)
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "workeridseq")
 	private int workerId;
 	
 	@Column(name="salary")
 	private float salary;
 	
 	@Column(name="date_of_employment")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfEmployment;
 	
 	public Worker() {

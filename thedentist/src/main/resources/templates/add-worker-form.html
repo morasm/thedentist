@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"  
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Registration</title>
+    <title>Add worker</title>
     
     <link href="css/personform.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,7 +11,7 @@
 </head>
 <body>
 	<div id="container">
-		<h1>REGISTRATION FORM</h1>
+		<h1>ADD WORKER FORM</h1>
 	    <form action="#" th:action="@{/addWorkerForm}" th:object="${addWorker}" method="post">
 	        <p>FIRST NAME: <input type="text" placeholder="eg. Jan" th:field="*{firstName}" /></p>
 	        <p>LAST NAME: <input type="text" placeholder="eg. Kowalski" th:field="*{lastName}" /></p>
@@ -23,6 +22,9 @@
 	        <p>PHONE NUMBER: <input type="text" placeholder="eg. 602602602" th:field="*{phoneNumber}" /></p>
 	        <p>E-MAIL ADDRESS: <input type="email" placeholder="eg. jan@mail.com" th:field="*{emailAddress}" /></p>
 	        <p>PASSWORD: <input type="password" th:field="*{password}" /></p>
+	        <p>WORKER ID: <input type="number" name="workerId" id="*{addWorker.workerId}" th:value="${addWorkerId.workerId}" readonly="readonly"/></p>
+	        <p>SALARY: <input type="number" placeholder="eg. 1523,0" th:field="*{salary}" /></p>
+	        <p>DATE OF EMPLOYMENT: <input type="date" th:field="*{{dateOfEmployment}}" /></p>
 	        <p><input type="submit" value="Add worker"/></p>
 	        <div id="home_link">
 	        	<a href="home">Go back to the Home Page</a>
